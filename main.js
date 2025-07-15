@@ -49,4 +49,33 @@ function showQuestion() {
     btn.onclick = ()=>selectAnswer(ans);
     answersDiv.appendChild(btn);
   });
-  document.get
+  document.getElementById('progress').innerText = `Question ${currentQuestion+1} of ${questions.length}`;
+}
+
+function selectAnswer(answer) {
+  scores[answer.axis] += answer.value;
+  currentQuestion++;
+  if (currentQuestion < questions.length) showQuestion();
+  else window.location.href = 'results.html';
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  if(!document.getElementById('mbtiType')) return;
+
+  let D = scores.D, C = scores.C, V = scores.V, U = scores.U; // placeholder
+  const result = "UR-LUXE"; // temporary until you add scoring logic
+
+  document.getElementById('mbtiType').innerText = buyerArchetypeMap[result].name;
+  document.getElementById('mbtiName').innerText = buyerArchetypeMap[result].coreHook;
+  document.getElementById('mbtiDetails').innerHTML = `
+    <strong>Target Buyer:</strong> ${buyerArchetypeMap[result].targetBuyer}<br>
+    <strong>Price Range:</strong> ${buyerArchetypeMap[result].priceRange}<br>
+    <strong>Best Area:</strong> ${buyerArchetypeMap[result].bestArea}<br>
+    <strong>Vibe:</strong> ${buyerArchetypeMap[result].vibe}
+  `;
+  document.getElementById('archetypeFlyer').src = `images/${result}.png`;
+
+  fetch(`/.netlify/functions/getPlan?mbti=${result}`)
+    .then(res=>res.text())
+    .then(plan=>{ document.getElementById('planOutput').innerText = plan; });
+});

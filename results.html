@@ -1,35 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RE-DEFINED — Listing Results</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>RE-Defined — Your Buyer Archetype Fit</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: radial-gradient(ellipse at top, rgba(128,0,255,0.15), transparent),
+                  radial-gradient(ellipse at bottom, rgba(128,0,255,0.15), black);
+      background-color: #000;
+      color: #eee;
+      margin: 0;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .results-container {
+      max-width: 700px;
+      width: 100%;
+      border: 4px solid rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      padding: 40px;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(18px) brightness(1.1);
+      box-shadow: 0 0 60px rgba(128,0,255,0.2), 0 0 20px rgba(255,255,255,0.1);
+    }
+    h1, .tagline, h2 {
+      text-align: center;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    .cta a {
+      color: #eee;
+      text-decoration: underline;
+    }
+    .cta a:hover {
+      color: #fff;
+    }
+    .mbti-details,
+    .insight-output,
+    .plan-output {
+      margin: 20px auto;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      white-space: pre-wrap;
+      overflow-y: auto;
+    }
+  </style>
 </head>
+
 <body>
   <div class="results-container">
-    <h1>RE-DEFINED</h1>
-    <p class="tagline">Your AI-Powered Buyer Match</p>
+    <h1>RE-Defined</h1>
+    <p class="tagline">Your AI-Powered Listing Coach — Buyer Archetype Results</p>
 
-    <h2>Best Buyer Archetype:</h2>
+    <!-- Buyer Archetype -->
+    <h2>Most Likely Buyer Archetype:</h2>
     <div id="mbtiType" class="mbti-type">Loading...</div>
 
-    <h2>Core Strategy:</h2>
+    <!-- Core Hook -->
+    <h2>Core Hook:</h2>
     <div id="mbtiName" class="mbti-name">Loading...</div>
 
+    <!-- Buyer Fit Details -->
     <h2>Details:</h2>
-    <div id="mbtiDetails" class="mbti-details">Loading buyer match details...</div>
-
-    <h2>Suggested Flyer:</h2>
-    <img id="archetypeFlyer" src="" alt="Flyer" style="max-width:100%; display:block; margin:20px auto;" />
-
-    <h2>AI Marketing Plan:</h2>
-    <div id="planOutput" class="gpt-output">Loading your custom plan...</div>
-
-    <div class="cta">
-      <p>🔄 <a href="index.html">Analyze Another Listing</a></p>
+    <div id="mbtiDetails" class="mbti-details">
+      Loading buyer fit details...
     </div>
+
+    <!-- Matching Flyer -->
+    <h2>Recommended Listing Template:</h2>
+    <img id="archetypeFlyer" src="" alt="Recommended Flyer" style="max-width: 100%; margin: 20px 0; display: block;" />
+
+    <!-- AI Marketing Plan -->
+    <h2>AI-Generated Marketing Plan:</h2>
+    <div id="planOutput" class="plan-output">
+      Generating your plan...
+    </div>
+
+    <!-- CTA -->
+    <p class="cta">
+      🔄 <a href="index.html">Run it again</a> or 📈 <a href="https://yourrealtysass.com">Boost your marketing with RealtySaSS</a>
+    </p>
   </div>
+
   <script src="main.js"></script>
 </body>
 </html>

@@ -1,42 +1,46 @@
 [
   {
-    "question": "Is the location more Suburban or Urban?",
+    "question": "Would you describe the listing location as more Urban or Suburban?",
+    "axis": "US",
     "answers": [
-      {"text":"Strongly Suburban","axis":"D","value":-2},
-      {"text":"Suburban","axis":"D","value":-1},
-      {"text":"Balanced","axis":"D","value":0},
-      {"text":"Urban","axis":"D","value":1},
-      {"text":"Strongly Urban","axis":"D","value":2}
+      { "text": "Strongly Urban", "value": -2 },
+      { "text": "Urban", "value": -1 },
+      { "text": "Balanced", "value": 0 },
+      { "text": "Suburban", "value": 1 },
+      { "text": "Strongly Suburban", "value": 2 }
     ]
   },
   {
-    "question": "Is the property move-in ready or repairs needed?",
+    "question": "Is this property move-in ready or does it need work?",
+    "axis": "RW",
     "answers": [
-      {"text":"Major repairs","axis":"C","value":-2},
-      {"text":"Some repairs","axis":"C","value":-1},
-      {"text":"Neutral","axis":"C","value":0},
-      {"text":"Turnkey","axis":"C","value":1},
-      {"text":"Fully turnkey","axis":"C","value":2}
+      { "text": "Major repairs", "value": -2 },
+      { "text": "Needs some work", "value": -1 },
+      { "text": "Partially updated", "value": 0 },
+      { "text": "Mostly updated", "value": 1 },
+      { "text": "Fully move-in ready", "value": 2 }
     ]
   },
   {
-    "question": "Classic charm or modern vibe?",
+    "question": "Would you position this as a Budget-friendly or Premium listing?",
+    "axis": "BP",
     "answers": [
-      {"text":"Very classic","axis":"V","value":-2},
-      {"text":"Somewhat classic","axis":"V","value":-1},
-      {"text":"Balanced","axis":"V","value":0},
-      {"text":"Modern","axis":"V","value":1},
-      {"text":"Very modern","axis":"V","value":2}
+      { "text": "Strongly Budget", "value": -2 },
+      { "text": "Budget", "value": -1 },
+      { "text": "Balanced", "value": 0 },
+      { "text": "Premium", "value": 1 },
+      { "text": "Ultra Premium", "value": 2 }
     ]
   },
   {
-    "question": "Who is the best-fit buyer: Family or Investor?",
+    "question": "Is your target buyer local or someone relocating?",
+    "axis": "LR",
     "answers": [
-      {"text":"Family only","axis":"U","value":-2},
-      {"text":"More family","axis":"U","value":-1},
-      {"text":"Balanced","axis":"U","value":0},
-      {"text":"More investor","axis":"U","value":1},
-      {"text":"Investor only","axis":"U","value":2}
+      { "text": "Strongly Local", "value": -2 },
+      { "text": "Local", "value": -1 },
+      { "text": "Either", "value": 0 },
+      { "text": "Relocation", "value": 1 },
+      { "text": "Strongly Relocation", "value": 2 }
     ]
   }
 ]

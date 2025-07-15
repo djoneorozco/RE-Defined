@@ -31,6 +31,56 @@ const buyerArchetypeMap = {
     bestArea: "Suburban stable",
     vibe: "Warm, family-first",
     flyer: "FamilyNestSeeker-ModernNest-V2.png"
+  },
+  "SUB-RETRO": {
+    name: "The Classic Charm Buyer",
+    coreHook: "Vintage character homes",
+    targetBuyer: "Empty nesters",
+    priceRangeTier: "Mid",
+    budgetRange: "$200K–$400K",
+    bestArea: "Historic suburban",
+    vibe: "Soft, timeless, trust-rich",
+    flyer: "ClassicCharmer-Vintage-V1.png"
+  },
+  "STUDENT-HUB": {
+    name: "The College Hustler",
+    coreHook: "Walkability & convenience",
+    targetBuyer: "Students, Parents",
+    priceRangeTier: "Affordable–Mid",
+    budgetRange: "$100K–$200K",
+    bestArea: "Uni & campus radius",
+    vibe: "Trendy, colorful, social",
+    flyer: "CollegeHustler-Affordable-V1.png"
+  },
+  "BASE-HUB": {
+    name: "The VA Relocator",
+    coreHook: "Proximity & VA perks",
+    targetBuyer: "Military families",
+    priceRangeTier: "Entry–Mid",
+    budgetRange: "$100K–$200K",
+    bestArea: "Near bases",
+    vibe: "Reliable, clean, easy",
+    flyer: "VARelocator-Affordable-V1.png"
+  },
+  "RENT-READY": {
+    name: "The Passive Income Seeker",
+    coreHook: "Zero repairs, fast rent",
+    targetBuyer: "Small landlords",
+    priceRangeTier: "Mid–High",
+    budgetRange: "$400K–$650K",
+    bestArea: "Dense rentals",
+    vibe: "Structured, bold, low-maintenance",
+    flyer: "PassiveSeeker-Moderate-V1.png"
+  },
+  "DIY-DREAM": {
+    name: "The Hands-On Investor",
+    coreHook: "Sweat equity potential",
+    targetBuyer: "Contractors, DIYers",
+    priceRangeTier: "Bargain–Mid",
+    budgetRange: "$50K–$200K",
+    bestArea: "Fixer areas",
+    vibe: "Rugged, industrial, real",
+    flyer: "DIYDream-FixerUpper-V1.png"
   }
 };
 

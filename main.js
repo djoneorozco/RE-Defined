@@ -39,6 +39,7 @@ const startBtn = document.getElementById('startQuizBtn');
 if (startBtn) {
   startBtn.addEventListener('click', () => {
     localStorage.setItem('listingCity', document.getElementById('city').value);
+    localStorage.setItem('scores', JSON.stringify(scores)); // Save initial scores too
     document.getElementById('customFields').style.display = 'none';
     document.getElementById('quizSection').style.display = 'block';
     showQuestion();
@@ -61,6 +62,7 @@ function showQuestion() {
 
 function selectAnswer(answer) {
   scores[answer.axis] += answer.value;
+  localStorage.setItem('scores', JSON.stringify(scores)); // Save after each answer
   currentQuestion++;
   if (currentQuestion < questions.length) showQuestion();
   else window.location.href = 'results.html';
@@ -69,8 +71,19 @@ function selectAnswer(answer) {
 document.addEventListener('DOMContentLoaded', () => {
   if (!document.getElementById('mbtiType')) return;
 
-  let D = scores.D, C = scores.C, V = scores.V, U = scores.U; // placeholder
-  const result = "UR-LUXE"; // temporary until you add scoring logic
+  // ✅ Load scores from localStorage
+  scores = JSON.parse(localStorage.getItem('scores') || '{"D":0,"C":0,"V":0,"U":0}');
+  let D = scores.D, C = scores.C, V = scores.V, U = scores.U;
+
+  // ✅ Simple logic: pick the axis with the highest score
+  let result = "UR-LUXE"; // fallback
+  if (U >= D && U >= C && U >= V) {
+    result = "UR-LUXE";
+  } else if (D >= U && D >= C && D >= V) {
+    result = "UR-FIX";
+  } else if (C >= U && C >= D && C >= V) {
+    result = "SUB-FAM";
+  }
 
   document.getElementById('mbtiType').innerText = buyerArchetypeMap[result].name;
   document.getElementById('mbtiName').innerText = buyerArchetypeMap[result].coreHook;

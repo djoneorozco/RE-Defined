@@ -1,103 +1,98 @@
 const buyerArchetypeMap = {
   "UR-LUXE": {
+    code: "UR-LUXE",
     name: "The Luxury Seeker",
     coreHook: "Prestige & urban lifestyle",
     targetBuyer: "Affluent end-users",
-    priceRange: "High 7-figures+",
+    budgetTier: "High, Luxury",
+    budgetRange: "$650K+ to $900K+",
     bestArea: "Urban core",
+    styleTags: ["UC", "UM"],
     vibe: "Sleek, premium, aspirational",
-    flyer: "LuxurySeeker-ModernGatedEstate-ForSale_V1.png"
+    flyer: "LuxurySeeker-High-UC.png"
   },
   "UR-FIX": {
+    code: "UR-FIX",
     name: "The Urban Flipper",
     coreHook: "Quick turnaround profit",
     targetBuyer: "Fix/Flip investors",
-    priceRange: "Mid-range",
+    budgetTier: "Fix, Entry, Mid",
+    budgetRange: "$50K to $400K",
     bestArea: "Gentrifying urban",
+    styleTags: ["FU", "UR"],
     vibe: "Bold, ROI-focused",
-    flyer: "UrbanFlipper-Moderate-V1.png"
+    flyer: "UrbanFlipper-Entry-FU.png"
   },
   "SUB-FAM": {
+    code: "SUB-FAM",
     name: "The Family Nest Seeker",
     coreHook: "Safety & community",
     targetBuyer: "Families, VA buyers",
-    priceRange: "Entry–Mid",
+    budgetTier: "Entry, Mid, Mid-High",
+    budgetRange: "$100K to $650K",
     bestArea: "Suburban stable",
+    styleTags: ["SF", "SS"],
     vibe: "Warm, family-first",
-    flyer: "FamilyNestSeeker-ModernNest-V2.png"
+    flyer: "FamilyNestSeeker-Mid-SF.png"
+  },
+  "VA-RELOC": {
+    code: "VA-RELOC",
+    name: "The VA Relocator",
+    coreHook: "Military benefits, stability",
+    targetBuyer: "Military families",
+    budgetTier: "Entry, Mid, High",
+    budgetRange: "$100K to $900K",
+    bestArea: "Near bases",
+    styleTags: ["MP", "SF"],
+    vibe: "Reliable, clean, easy",
+    flyer: "VARelocator-High-MP.png"
+  },
+  "CHARM": {
+    code: "CHARM",
+    name: "The Classic Charm Buyer",
+    coreHook: "Vintage, timeless character",
+    targetBuyer: "Empty nesters, heritage buyers",
+    budgetTier: "Entry, Mid, High",
+    budgetRange: "$100K to $900K",
+    bestArea: "Historic suburban",
+    styleTags: ["HC", "SS"],
+    vibe: "Soft, trust-rich",
+    flyer: "ClassicCharmBuyer-Mid-HC.png"
+  },
+  "STUDENT": {
+    code: "STUDENT",
+    name: "The College Hustler",
+    coreHook: "Campus convenience",
+    targetBuyer: "Students, parents",
+    budgetTier: "Fix, Entry, Mid",
+    budgetRange: "$50K to $400K",
+    bestArea: "Uni & campus radius",
+    styleTags: ["CS", "UC"],
+    vibe: "Trendy, social, colorful",
+    flyer: "CollegeHustler-Entry-CS.png"
+  },
+  "RENT": {
+    code: "RENT",
+    name: "The Passive Income Seeker",
+    coreHook: "Rent-ready cashflow",
+    targetBuyer: "Small landlords",
+    budgetTier: "Mid, Mid-High",
+    budgetRange: "$200K to $650K",
+    bestArea: "Dense rental pockets",
+    styleTags: ["MR", "RR"],
+    vibe: "Structured, bold, low-maintenance",
+    flyer: "PassiveIncomeSeeker-Mid-MR.png"
+  },
+  "DIY": {
+    code: "DIY",
+    name: "The Hands-On Investor",
+    coreHook: "Sweat equity potential",
+    targetBuyer: "Contractors, DIYers",
+    budgetTier: "Fix, Entry",
+    budgetRange: "$50K to $200K",
+    bestArea: "Fixer areas",
+    styleTags: ["FU", "DIY"],
+    vibe: "Rugged, industrial, real",
+    flyer: "HandsOnInvestor-Fix-DIY.png"
   }
 };
-
-let currentQuestion = 0;
-let scores = { D: 0, C: 0, V: 0, U: 0 };
-
-let questions = [];
-fetch('questions.json').then(res => res.json()).then(data => { questions = data; });
-
-// ✅ Safe guard so it works on index.html but does not crash on results.html
-const startBtn = document.getElementById('startQuizBtn');
-if (startBtn) {
-  startBtn.addEventListener('click', () => {
-    localStorage.setItem('listingCity', document.getElementById('city').value);
-    localStorage.setItem('scores', JSON.stringify(scores)); // Save initial scores too
-    document.getElementById('customFields').style.display = 'none';
-    document.getElementById('quizSection').style.display = 'block';
-    showQuestion();
-  });
-}
-
-function showQuestion() {
-  const q = questions[currentQuestion];
-  document.getElementById('question').innerText = q.question;
-  const answersDiv = document.getElementById('answers');
-  answersDiv.innerHTML = '';
-  q.answers.forEach(ans => {
-    const btn = document.createElement('button');
-    btn.innerText = ans.text;
-    btn.onclick = () => selectAnswer(ans);
-    answersDiv.appendChild(btn);
-  });
-  document.getElementById('progress').innerText = `Question ${currentQuestion + 1} of ${questions.length}`;
-}
-
-function selectAnswer(answer) {
-  scores[answer.axis] += answer.value;
-  localStorage.setItem('scores', JSON.stringify(scores)); // Save after each answer
-  currentQuestion++;
-  if (currentQuestion < questions.length) showQuestion();
-  else window.location.href = 'results.html';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (!document.getElementById('mbtiType')) return;
-
-  // ✅ Load scores from localStorage
-  scores = JSON.parse(localStorage.getItem('scores') || '{"D":0,"C":0,"V":0,"U":0}');
-  let D = scores.D, C = scores.C, V = scores.V, U = scores.U;
-
-  // ✅ Simple logic: pick the axis with the highest score
-  let result = "UR-LUXE"; // fallback
-  if (U >= D && U >= C && U >= V) {
-    result = "UR-LUXE";
-  } else if (D >= U && D >= C && D >= V) {
-    result = "UR-FIX";
-  } else if (C >= U && C >= D && C >= V) {
-    result = "SUB-FAM";
-  }
-
-  document.getElementById('mbtiType').innerText = buyerArchetypeMap[result].name;
-  document.getElementById('mbtiName').innerText = buyerArchetypeMap[result].coreHook;
-  document.getElementById('mbtiDetails').innerHTML = `
-    <strong>Target Buyer:</strong> ${buyerArchetypeMap[result].targetBuyer}<br>
-    <strong>Price Range:</strong> ${buyerArchetypeMap[result].priceRange}<br>
-    <strong>Best Area:</strong> ${buyerArchetypeMap[result].bestArea}<br>
-    <strong>Vibe:</strong> ${buyerArchetypeMap[result].vibe}
-  `;
-
-  document.getElementById('archetypeFlyer').src = `images/${buyerArchetypeMap[result].flyer}`;
-  document.getElementById('archetypeFlyer').alt = `${buyerArchetypeMap[result].name} Flyer`;
-
-  fetch(`/.netlify/functions/getPlan?mbti=${result}`)
-    .then(res => res.text())
-    .then(plan => { document.getElementById('planOutput').innerText = plan; });
-});

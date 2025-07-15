@@ -46,13 +46,20 @@
     }
     .mbti-details,
     .insight-output,
-    .plan-output {
+    .plan-output,
+    .boardroom-summary {
       margin: 20px auto;
       background: rgba(255,255,255,0.05);
       padding: 20px;
       border-radius: 12px;
       white-space: pre-wrap;
       overflow-y: auto;
+    }
+    .boardroom-summary-credit {
+      font-size: 0.8rem;
+      color: #aaa;
+      text-align: right;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -84,6 +91,15 @@
     <h2>AI-Generated Marketing Plan:</h2>
     <div id="planOutput" class="plan-output">
       Generating your plan...
+    </div>
+
+    <!-- Boardroom Summary -->
+    <h2>Buyer Archetype Boardroom Summary:</h2>
+    <div id="boardroomSummary" class="boardroom-summary">
+      Loading your full Boardroom insights...
+      <div class="boardroom-summary-credit">
+        Developed by IVY 2.99, your A.I.-Powered Real Estate Mastery Engine.
+      </div>
     </div>
 
     <!-- CTA -->

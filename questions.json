@@ -1,46 +1,97 @@
 [
   {
-    "question": "Would you describe the listing location as more Urban or Suburban?",
-    "axis": "US",
+    "question": "Is the property's location better described as urban, suburban, or rural?",
     "answers": [
-      { "text": "Strongly Urban", "value": -2 },
-      { "text": "Urban", "value": -1 },
-      { "text": "Balanced", "value": 0 },
-      { "text": "Suburban", "value": 1 },
-      { "text": "Strongly Suburban", "value": 2 }
+      { "text": "Urban", "axis": "U", "value": 2 },
+      { "text": "Somewhat urban", "axis": "U", "value": 1 },
+      { "text": "Balanced", "axis": "U", "value": 0 },
+      { "text": "Somewhat suburban", "axis": "U", "value": -1 },
+      { "text": "Suburban/Rural", "axis": "U", "value": -2 }
     ]
   },
   {
-    "question": "Is this property move-in ready or does it need work?",
-    "axis": "RW",
+    "question": "What is the property's current condition?",
     "answers": [
-      { "text": "Major repairs", "value": -2 },
-      { "text": "Needs some work", "value": -1 },
-      { "text": "Partially updated", "value": 0 },
-      { "text": "Mostly updated", "value": 1 },
-      { "text": "Fully move-in ready", "value": 2 }
+      { "text": "Complete fixer-upper", "axis": "D", "value": 2 },
+      { "text": "Needs some repairs", "axis": "D", "value": 1 },
+      { "text": "Average, decent", "axis": "D", "value": 0 },
+      { "text": "Well maintained", "axis": "D", "value": -1 },
+      { "text": "Turnkey move-in ready", "axis": "D", "value": -2 }
     ]
   },
   {
-    "question": "Would you position this as a Budget-friendly or Premium listing?",
-    "axis": "BP",
+    "question": "Is the neighborhood known for its historic charm or modern developments?",
     "answers": [
-      { "text": "Strongly Budget", "value": -2 },
-      { "text": "Budget", "value": -1 },
-      { "text": "Balanced", "value": 0 },
-      { "text": "Premium", "value": 1 },
-      { "text": "Ultra Premium", "value": 2 }
+      { "text": "Historic character", "axis": "R", "value": 2 },
+      { "text": "Mostly older homes", "axis": "R", "value": 1 },
+      { "text": "Balanced", "axis": "R", "value": 0 },
+      { "text": "Mostly modern homes", "axis": "R", "value": -1 },
+      { "text": "Brand new developments", "axis": "R", "value": -2 }
     ]
   },
   {
-    "question": "Is your target buyer local or someone relocating?",
-    "axis": "LR",
+    "question": "Is the property close to major employer hubs like a military base, university, or hospital?",
     "answers": [
-      { "text": "Strongly Local", "value": -2 },
-      { "text": "Local", "value": -1 },
-      { "text": "Either", "value": 0 },
-      { "text": "Relocation", "value": 1 },
-      { "text": "Strongly Relocation", "value": 2 }
+      { "text": "Very close to military base", "axis": "V", "value": 2 },
+      { "text": "Close to college/university", "axis": "C", "value": 2 },
+      { "text": "Near major employers", "axis": "C", "value": 1 },
+      { "text": "Somewhat close", "axis": "C", "value": 0 },
+      { "text": "No major hubs nearby", "axis": "C", "value": -2 }
+    ]
+  },
+  {
+    "question": "Who is the most likely buyer for this property?",
+    "answers": [
+      { "text": "Family with kids", "axis": "F", "value": 2 },
+      { "text": "Investor looking for ROI", "axis": "I", "value": 2 },
+      { "text": "Young professional", "axis": "U", "value": 2 },
+      { "text": "Single or couple", "axis": "U", "value": 1 },
+      { "text": "Anyone, open market", "axis": "U", "value": 0 }
+    ]
+  },
+  {
+    "question": "What’s the expected timeline to sell this property?",
+    "answers": [
+      { "text": "Flip ASAP, fast deal", "axis": "D", "value": 2 },
+      { "text": "Quick turnaround", "axis": "D", "value": 1 },
+      { "text": "No rush, waiting for best buyer", "axis": "D", "value": 0 },
+      { "text": "Hold long-term", "axis": "D", "value": -1 },
+      { "text": "Ideal for passive income", "axis": "D", "value": -2 }
+    ]
+  },
+  {
+    "question": "Does the property have unique features like vintage charm or smart tech?",
+    "answers": [
+      { "text": "Historic vintage features", "axis": "R", "value": 2 },
+      { "text": "Mix of old & new", "axis": "R", "value": 0 },
+      { "text": "Modern finishes & tech", "axis": "R", "value": -2 }
+    ]
+  },
+  {
+    "question": "Is rental income potential a major selling point?",
+    "answers": [
+      { "text": "Yes, fully rent-ready", "axis": "I", "value": 2 },
+      { "text": "Good potential", "axis": "I", "value": 1 },
+      { "text": "Maybe", "axis": "I", "value": 0 },
+      { "text": "No rental potential", "axis": "I", "value": -2 }
+    ]
+  },
+  {
+    "question": "How would you describe the neighborhood vibe?",
+    "answers": [
+      { "text": "Tight-knit community", "axis": "F", "value": 2 },
+      { "text": "Balanced", "axis": "F", "value": 0 },
+      { "text": "Urban nightlife & trendy", "axis": "U", "value": 2 }
+    ]
+  },
+  {
+    "question": "Which statement best describes the property’s best buyer fit?",
+    "answers": [
+      { "text": "Family looking for stability", "axis": "F", "value": 2 },
+      { "text": "Investor wanting quick ROI", "axis": "I", "value": 2 },
+      { "text": "Young buyer wanting modern vibe", "axis": "U", "value": 2 },
+      { "text": "Military or VA buyer", "axis": "V", "value": 2 },
+      { "text": "Student rental", "axis": "C", "value": 2 }
     ]
   }
 ]

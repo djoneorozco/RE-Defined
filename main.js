@@ -41,7 +41,9 @@ let currentQuestion = 0;
 let scores = { D: 0, C: 0, V: 0, U: 0 };
 
 let questions = [];
-fetch('questions.json').then(res => res.json()).then(data => { questions = data; });
+fetch('questions.json')
+  .then(res => res.json())
+  .then(data => { questions = data; });
 
 // ================================
 // #3 — Start Quiz Button
@@ -81,8 +83,9 @@ function showQuestion() {
 function selectAnswer(answer) {
   scores[answer.axis] += answer.value;
   currentQuestion++;
-  if (currentQuestion < questions.length) showQuestion();
-  else {
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
     localStorage.setItem('buyerScores', JSON.stringify(scores)); // Store final scores
     window.location.href = 'results.html';
   }
@@ -92,7 +95,6 @@ function selectAnswer(answer) {
 // #6 — Determine Buyer Archetype
 // ================================
 function determineBuyerArchetype(scores) {
-  // Simple dominant axis logic — tweak later!
   if (scores.U >= scores.D && scores.U >= scores.C && scores.U >= scores.V) {
     return "UR-LUXE";
   } else if (scores.D >= scores.U && scores.D >= scores.C && scores.D >= scores.V) {
@@ -105,7 +107,7 @@ function determineBuyerArchetype(scores) {
 }
 
 // ================================
-// #7 — Results Page Logic
+// #7 — Results Page Logic + OpenAI Call
 // ================================
 document.addEventListener('DOMContentLoaded', () => {
   if (!document.getElementById('mbtiType')) return;

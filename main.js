@@ -187,25 +187,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   // ================================
-  // Add Boardroom Summary Output
+  // ✅ New: Fetch Boardroom Summary .md dynamically
   // ================================
-  const boardroomSummaryMap = {
-    "UR-LUXE": "Your full UR-LUXE Boardroom-grade summary goes here...",
-    "UR-FIX": "Your full UR-FIX Boardroom-grade summary goes here...",
-    "SUB-FAM": "Your full SUB-FAM Boardroom-grade summary goes here...",
-    "SUB-RETRO": "Your full SUB-RETRO Boardroom-grade summary goes here...",
-    "STUDENT-HUB": "Your full STUDENT-HUB Boardroom-grade summary goes here...",
-    "BASE-HUB": "Your full BASE-HUB Boardroom-grade summary goes here...",
-    "RENT-READY": "Your full RENT-READY Boardroom-grade summary goes here...",
-    "DIY-DREAM": "Your full DIY-DREAM Boardroom-grade summary goes here..."
-  };
-
-  const summary = boardroomSummaryMap[result] || "No Boardroom summary available.";
-
-  document.getElementById('boardroomSummary').innerHTML = `
-    ${summary}
-    <div class="boardroom-summary-credit">
-      Developed by IVY 2.99, your A.I.-Powered Real Estate Mastery Engine.
-    </div>
-  `;
+  const boardroomFileName = result.replace(/-/g, '-') + ".md"; // match your actual filenames
+  fetch(`plans/${boardroomFileName}`)
+    .then(res => res.text())
+    .then(summary => {
+      document.getElementById('boardroomSummary').innerHTML = `
+        ${summary}
+        <div class="boardroom-summary-credit">
+          Developed by IVY 2.99, your A.I.-Powered Real Estate Mastery Engine.
+        </div>
+      `;
+    })
+    .catch(err => {
+      document.getElementById('boardroomSummary').innerHTML = `
+        No Boardroom summary found.
+        <div class="boardroom-summary-credit">
+          Developed by IVY 2.99, your A.I.-Powered Real Estate Mastery Engine.
+        </div>
+      `;
+    });
 });

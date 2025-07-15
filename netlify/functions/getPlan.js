@@ -1,38 +1,48 @@
+// netlify/functions/getPlan.js
+
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY
 });
 
-export async function handler(event) {
+export default async (req, res) => {
   try {
-    const mbti = event.queryStringParameters.mbti || "Unknown";
+    const mbti = req.query.mbti || "Unknown";
 
-    // Example: parse your matrix to get details
-    const buyer = mbti; // Like "FamilyNestSeeker-Mid-SF"
-
-    const prompt = `You are an elite real estate listing coach. Give me a marketing plan for ${buyer}. 
-    Include: 1) A catchy headline, 2) 3 unique marketing tactics, 3) a social caption idea.`;
-
+    // 📝 Basic marketing plan prompt — tweak to taste
     const completion = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
-        { role: "system", content: "You are a top real estate marketing strategist." },
-        { role: "user", content: prompt },
+        {
+          role: "system",
+          content: "You are an expert real estate marketing strategist. Provide clear, concise marketing plans."
+        },
+        {
+          role: "user",
+          content: `Create a brief actionable marketing plan for the buyer archetype ${mbti}.
+          
+          Include target audience, top 3 messaging hooks, recommended channels, and 1 bonus tactic.`
+        }
       ],
     });
 
-    const plan = completion.choices[0].message.content;
+    const planText = completion.choices[0].message.content;
 
-    return {
-      statusCode: 200,
-      body: plan,
-    };
-  } catch (err) {
-    console.error("OpenAI error:", err);
-    return {
-      statusCode: 500,
-      body: "Server error",
-    };
+    return new Response(planText, {
+      status: 200,
+      headers: { "Content-Type": "text/plain" },
+    });
+
+  } catch (error) {
+    console.error("OpenAI Error:", error);
+
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      }
+    );
   }
-}
+};

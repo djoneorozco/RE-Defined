@@ -1,1 +1,42 @@
-
+[
+  {
+    "question": "Is the location more Suburban or Urban?",
+    "answers": [
+      {"text":"Strongly Suburban","axis":"D","value":-2},
+      {"text":"Suburban","axis":"D","value":-1},
+      {"text":"Balanced","axis":"D","value":0},
+      {"text":"Urban","axis":"D","value":1},
+      {"text":"Strongly Urban","axis":"D","value":2}
+    ]
+  },
+  {
+    "question": "Is the property move-in ready or repairs needed?",
+    "answers": [
+      {"text":"Major repairs","axis":"C","value":-2},
+      {"text":"Some repairs","axis":"C","value":-1},
+      {"text":"Neutral","axis":"C","value":0},
+      {"text":"Turnkey","axis":"C","value":1},
+      {"text":"Fully turnkey","axis":"C","value":2}
+    ]
+  },
+  {
+    "question": "Classic charm or modern vibe?",
+    "answers": [
+      {"text":"Very classic","axis":"V","value":-2},
+      {"text":"Somewhat classic","axis":"V","value":-1},
+      {"text":"Balanced","axis":"V","value":0},
+      {"text":"Modern","axis":"V","value":1},
+      {"text":"Very modern","axis":"V","value":2}
+    ]
+  },
+  {
+    "question": "Who is the best-fit buyer: Family or Investor?",
+    "answers": [
+      {"text":"Family only","axis":"U","value":-2},
+      {"text":"More family","axis":"U","value":-1},
+      {"text":"Balanced","axis":"U","value":0},
+      {"text":"More investor","axis":"U","value":1},
+      {"text":"Investor only","axis":"U","value":2}
+    ]
+  }
+]

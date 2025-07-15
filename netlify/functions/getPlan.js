@@ -1,29 +1,41 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-exports.handler = async function(event) {
-  const buyerType = event.queryStringParameters.buyerType;
-
-  if (!buyerType) {
-    return {
-      statusCode: 400,
-      body: 'Missing buyerType parameter.'
-    };
-  }
-
+export async function handler(event) {
   try {
-    const filePath = path.join(__dirname, '../../plans', `${buyerType}.md`);
-    const plan = fs.readFileSync(filePath, 'utf8');
+    const buyerType = event.queryStringParameters.buyerType;
+
+    if (!buyerType) {
+      return {
+        statusCode: 400,
+        body: "No buyerType provided."
+      };
+    }
+
+    // 🗂️ Reads from /plans folder (use .md or .txt)
+    const planPath = path.join(process.cwd(), 'plans', `${buyerType}.md`);
+    console.log("Looking for plan at:", planPath);
+
+    if (!fs.existsSync(planPath)) {
+      return {
+        statusCode: 404,
+        body: "Plan not found."
+      };
+    }
+
+    const plan = fs.readFileSync(planPath, 'utf-8');
 
     return {
       statusCode: 200,
+      headers: { "Content-Type": "text/plain" },
       body: plan
     };
-  } catch (error) {
-    console.error(error);
+
+  } catch (err) {
+    console.error("getPlan.js Error:", err);
     return {
       statusCode: 500,
-      body: 'Error fetching buyer plan.'
+      body: "Server error."
     };
   }
-};
+}

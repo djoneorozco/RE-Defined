@@ -34,12 +34,16 @@ let scores = { D: 0, C: 0, V: 0, U: 0 };
 let questions = [];
 fetch('questions.json').then(res => res.json()).then(data => { questions = data; });
 
-document.getElementById('startQuizBtn').addEventListener('click', () => {
-  localStorage.setItem('listingCity', document.getElementById('city').value);
-  document.getElementById('customFields').style.display = 'none';
-  document.getElementById('quizSection').style.display = 'block';
-  showQuestion();
-});
+// ✅ Safe guard so it works on index.html but does not crash on results.html
+const startBtn = document.getElementById('startQuizBtn');
+if (startBtn) {
+  startBtn.addEventListener('click', () => {
+    localStorage.setItem('listingCity', document.getElementById('city').value);
+    document.getElementById('customFields').style.display = 'none';
+    document.getElementById('quizSection').style.display = 'block';
+    showQuestion();
+  });
+}
 
 function showQuestion() {
   const q = questions[currentQuestion];

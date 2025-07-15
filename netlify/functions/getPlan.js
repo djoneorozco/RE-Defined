@@ -1,41 +1,38 @@
-import fs from 'fs';
-import path from 'path';
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 export async function handler(event) {
   try {
-    const buyerType = event.queryStringParameters.buyerType;
+    const mbti = event.queryStringParameters.mbti || "Unknown";
 
-    if (!buyerType) {
-      return {
-        statusCode: 400,
-        body: "No buyerType provided."
-      };
-    }
+    // Example: parse your matrix to get details
+    const buyer = mbti; // Like "FamilyNestSeeker-Mid-SF"
 
-    // 🗂️ Reads from /plans folder (use .md or .txt)
-    const planPath = path.join(process.cwd(), 'plans', `${buyerType}.md`);
-    console.log("Looking for plan at:", planPath);
+    const prompt = `You are an elite real estate listing coach. Give me a marketing plan for ${buyer}. 
+    Include: 1) A catchy headline, 2) 3 unique marketing tactics, 3) a social caption idea.`;
 
-    if (!fs.existsSync(planPath)) {
-      return {
-        statusCode: 404,
-        body: "Plan not found."
-      };
-    }
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        { role: "system", content: "You are a top real estate marketing strategist." },
+        { role: "user", content: prompt },
+      ],
+    });
 
-    const plan = fs.readFileSync(planPath, 'utf-8');
+    const plan = completion.choices[0].message.content;
 
     return {
       statusCode: 200,
-      headers: { "Content-Type": "text/plain" },
-      body: plan
+      body: plan,
     };
-
   } catch (err) {
-    console.error("getPlan.js Error:", err);
+    console.error("OpenAI error:", err);
     return {
       statusCode: 500,
-      body: "Server error."
+      body: "Server error",
     };
   }
 }

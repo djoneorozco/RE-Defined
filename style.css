@@ -18,6 +18,32 @@ body {
 /* ============================
   Quiz & Results Containers
 =============================== */
+.glow-wrapper {
+  position: relative;
+}
+
+.glow-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(circle, rgba(128, 0, 255, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: swirlGlow 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes swirlGlow {
+  0% {
+    transform: rotate(0deg) translateZ(0);
+  }
+  100% {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
 .quiz-container,
 .results-container {
   max-width: 700px;

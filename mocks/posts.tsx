@@ -1,4 +1,5 @@
-{
+export const posts = [
+    {
         id: "0",
         name: "Moyo Shiro",
         time: "09:00 AM",

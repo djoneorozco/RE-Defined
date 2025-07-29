@@ -1,1 +1,105 @@
-.gitignore
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SaSStisfied — Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="HomeScreen.module.sass" />
+  </head>
+  <body>
+    <div class="main">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="user">
+          <img src="../../images/avatar-kohaku.png" alt="User Avatar" class="avatar" />
+          <p class="username">Kohaku</p>
+        </div>
+        <nav>
+          <ul>
+            <li class="active">Home</li>
+            <li>Notifications</li>
+            <li>Messages</li>
+            <li>Bookmarks</li>
+            <li>Profile</li>
+            <li>Explore</li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Feed -->
+      <main class="feed">
+        <div class="head">
+          <div class="tabs">
+            <button class="active">For you</button>
+            <button>Following</button>
+          </div>
+          <div class="search">
+            <input type="text" placeholder="Search..." />
+          </div>
+          <div class="button">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="list">
+          <!-- Post 1 -->
+          <div class="post">
+            <div class="post-header">
+              <img src="../../images/avatar-moyo.png" alt="Moyo Avatar" class="avatar" />
+              <div class="post-info">
+                <strong>Moyo Shiro</strong>
+                <span class="time">09:00 AM</span>
+              </div>
+            </div>
+            <p class="post-text">
+              Just launched my new portfolio website! 🚀 Check out these 15 standout examples of creative,
+              sleek, and interactive portfolio designs that inspired me.
+              <span class="hashtags">#WebDesign #PortfolioInspiration</span>
+            </p>
+            <div class="post-actions">
+              <span>❤️ 62</span>
+              <span>💬 23</span>
+              <span>🔁 45</span>
+            </div>
+          </div>
+
+          <!-- Post 2 (Elena) -->
+          <div class="post">
+            <div class="post-header">
+              <img src="../../images/avatar-elena.png" alt="Elena Avatar" class="avatar" />
+              <div class="post-info">
+                <strong>Elena</strong>
+                <span class="time">01:12 AM</span>
+              </div>
+            </div>
+            <p class="post-text">
+              Come and Try e-SaSS — our Behavior Science-designed, A.I. Powered Social Media Platform for
+              Exhilarating but Safe Fun!
+            </p>
+            <div class="post-image">
+              <img src="../../images/elena-suit.jpg" alt="Elena in suit" />
+            </div>
+            <div class="post-actions">
+              <span>❤️ 59</span>
+              <span>💬 16</span>
+              <span>🔁 24</span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Who to Follow -->
+      <aside class="right-sidebar">
+        <h3>Who to follow</h3>
+        <ul>
+          <li><strong>George</strong><br /><small>I design digital products and ventures.</small></li>
+          <li><strong>Nettie Schuster</strong><br /><small>The “No Code SaaS” Guy.</small></li>
+          <li><strong>Mrs. Lola Rohan</strong><br /><small>Digital products & ventures.</small></li>
+        </ul>
+      </aside>
+    </div>
+  </body>
+</html>

@@ -18,8 +18,12 @@
   },
   "devDependencies": {
     "eslint": "latest",
-    "eslint-config-next": "latest"
+    "eslint-config-next": "latest",
+    "typescript": "^5.4.5",
+    "@types/react": "^18.2.15",
+    "@types/node": "^20.11.30"
   },
   "keywords": [],
+  "author": "Josue Orozco",
   "license": "MIT"
 }

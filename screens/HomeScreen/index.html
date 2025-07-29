@@ -1,152 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RE-DEFINED — Home</title>
+//# ===========================================
+//# SaSStisfied Homepage (index.tsx) - Ivy 2.99 Polished
+//# Description: Modernized UX using your template's styles
+//# ===========================================
 
-  <!-- 🌐 Global Styles -->
-  <link rel="stylesheet" href="../../style.css" />
-  <link rel="stylesheet" href="../../styles/layout.css" />
-  <link rel="stylesheet" href="../../styles/page.css" />
-  <link rel="stylesheet" href="../../styles/common.sass" />
-  <link rel="stylesheet" href="../../styles/variable.sass" />
+import React from 'react';
+import styles from '@/styles/HomeScreen.module.sass';
+import common from '@/styles/common.sass';
+import layout from '@/styles/layout.css';
+import page from '@/styles/page.css';
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(120deg, #0f0f0f, #1b1030);
-      color: #fff;
-    }
-
-    .home-container {
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .sidebar {
-      width: 250px;
-      background-color: #101010;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .sidebar nav a {
-      display: block;
-      color: #ddd;
-      margin: 12px 0;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .sidebar nav a:hover {
-      color: #fff;
-    }
-
-    .post-button {
-      margin-top: 20px;
-      padding: 12px;
-      background: linear-gradient(to right, #ff00cc, #3333ff);
-      border: none;
-      border-radius: 24px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .main-feed {
-      flex: 1;
-      padding: 32px;
-      background: linear-gradient(to bottom, #1a1a2e, #1f1f2f);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow-y: auto;
-    }
-
-    .post-card {
-      width: 600px;
-      background-color: #222;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-    }
-
-    .post-card h3 {
-      margin-top: 0;
-      margin-bottom: 8px;
-    }
-
-    .rightbar {
-      width: 250px;
-      background-color: #101010;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      color: #ccc;
-    }
-
-    .rightbar h4 {
-      margin-bottom: 12px;
-    }
-
-    .user-suggestion {
-      margin-bottom: 12px;
-    }
-  </style>
-</head>
-<body>
-  <div class="home-container">
-    
-    <!-- 📚 Sidebar -->
-    <div class="sidebar">
-      <div>
-        <h2 style="color:white;">Kohaku</h2>
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">Notifications</a>
-          <a href="#">Messages</a>
-          <a href="#">Bookmarks</a>
-          <a href="#">Profile</a>
-          <a href="#">Explore</a>
+export default function HomePage() {
+  return (
+    <div className={`${styles.main} ${common.pageWrap}`}>
+      {/* Sidebar */}
+      <aside className={common.sidebar}>
+        <div className={common.logo}>Kohaku</div>
+        <nav className={common.navList}>
+          <a className={common.navItem + ' active'}>Home</a>
+          <a className={common.navItem}>Notifications</a>
+          <a className={common.navItem}>Messages</a>
+          <a className={common.navItem}>Bookmarks</a>
+          <a className={common.navItem}>Profile</a>
+          <a className={common.navItem}>Explore</a>
         </nav>
-      </div>
-      <button class="post-button">Post</button>
-    </div>
+        <button className={common.postBtn}>Post</button>
+      </aside>
 
-    <!-- 📰 Feed -->
-    <div class="main-feed">
-      <div class="post-card">
-        <h3>Welcome to RE-DEFINED</h3>
-        <p>Your feed will appear here soon...</p>
-      </div>
-    </div>
+      {/* Feed Area */}
+      <main className={common.feedArea}>
+        <div className={common.feedCard}>
+          <h2>Welcome to <span className={common.brandText}>RE-DEFINED</span></h2>
+          <p>Your feed will appear here soon...</p>
+        </div>
 
-    <!-- 💡 Rightbar -->
-    <div class="rightbar">
-      <h4>Who to follow</h4>
-      <div class="user-suggestion">
-        <strong>Leila</strong> <br />
-        Emotional Tantric Bonding
-      </div>
-      <div class="user-suggestion">
-        <strong>Odalys</strong> <br />
-        Dominant Latina Temptress
-      </div>
-      <div class="user-suggestion">
-        <strong>Violet</strong> <br />
-        Sensual Edge Hacker
-      </div>
+        {/* Elena Demo Post */}
+        <div className={common.postCard}>
+          <div className={common.postHeader}>
+            <img src="/avatars/elena.jpg" alt="Elena avatar" className={common.avatar} />
+            <div>
+              <strong>Elena</strong>
+              <div className={common.timestamp}>01:12 AM</div>
+            </div>
+          </div>
+          <p className={common.postText}>
+            Come and Try e-SaSS — our Behavior Science designed, A.I Powered Social Media Platform
+            for Exhilarating but Safe fun!
+          </p>
+          <img src="/images/elena-podium.png" className={common.postImage} alt="Elena speaking" />
+          <div className={common.postStats}>
+            <span>❤️ 59</span>
+            <span>💬 16</span>
+            <span>🔁 24</span>
+          </div>
+        </div>
+      </main>
 
-      <h4 style="margin-top: 24px;">Trending topics</h4>
-      <p>#AInRomance<br>#DarkDesire<br>#EmotionalIntelligence<br>#SaSStisfied</p>
+      {/* Right Sidebar */}
+      <aside className={common.rightSidebar}>
+        <div className={common.card}>
+          <h4>Who to follow</h4>
+          <div className={common.followList}>
+            <div>
+              <strong>Leila</strong>
+              <span>Emotional Tantric Bonding</span>
+            </div>
+            <div>
+              <strong>Odalys</strong>
+              <span>Dominant Latina Temptress</span>
+            </div>
+            <div>
+              <strong>Violet</strong>
+              <span>Sensual Edge Hacker</span>
+            </div>
+          </div>
+        </div>
+        <div className={common.card}>
+          <h4>Trending topics</h4>
+          <ul>
+            <li>#AInRomance</li>
+            <li>#DarkDesire</li>
+            <li>#EmotionalIntelligence</li>
+            <li>#SaSStisfied</li>
+          </ul>
+        </div>
+      </aside>
     </div>
-  </div>
-</body>
-</html>
+  );
+}

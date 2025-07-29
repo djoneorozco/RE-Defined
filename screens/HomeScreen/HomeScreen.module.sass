@@ -5,6 +5,8 @@
 
 .head
     display: flex
+    justify-content: space-between
+    align-items: center
     padding: 12px
     +m
         display: block
@@ -17,15 +19,39 @@
         width: 288px
     +m
         width: 100%
+        margin-bottom: 8px
 
 .search
     flex-grow: 1
+    input
+        background-color: #1e1e1e
+        border: none
+        padding: 10px 14px
+        border-radius: 12px
+        color: #fff
+        font-size: 15px
 
 .button
     flex-shrink: 0
     margin-left: 8px
+    padding: 10px 20px
+    border-radius: 10px
+    background: linear-gradient(to right, #ff00cc, #3333ff)
+    color: white
+    font-weight: 600
+    font-size: 15px
+    border: none
+    cursor: pointer
+    box-shadow: 0 0 8px rgba(255, 0, 200, 0.3)
+    transition: background 0.3s ease, box-shadow 0.3s ease
+
+    &:hover
+        background: linear-gradient(to right, #ff66cc, #6666ff)
+        box-shadow: 0 0 12px rgba(255, 0, 200, 0.5)
+
     svg
         transition: transform 0.2s
+
     &.active
         svg
             transform: rotate(45deg)
@@ -42,3 +68,34 @@
         .bodyAddMedia
             left: 0
             width: calc(100vw - 24px)
+
+.feedBackground
+    background: radial-gradient(circle at center, #1c1c2b 0%, #000000 100%)
+    padding: 20px
+    border-radius: 16px
+
+.postCard
+    background-color: #1e1e1e
+    border-radius: 16px
+    padding: 16px
+    margin-bottom: 20px
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2)
+    color: #fff
+    font-size: 14px
+
+    img
+        width: 100%
+        border-radius: 12px
+        margin-top: 12px
+
+    .meta
+        font-size: 13px
+        color: #aaa
+        margin-bottom: 6px
+
+    .actions
+        display: flex
+        justify-content: space-between
+        margin-top: 12px
+        font-size: 13px
+        color: #999

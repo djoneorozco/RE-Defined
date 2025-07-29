@@ -1,84 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SaSStisfied – Home</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="./HomeScreen.module.sass">
-</head>
-<body class="main">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SaSStisfied | Home</title>
+    <link rel="stylesheet" href="../../styles/variables.sass" />
+    <link rel="stylesheet" href="../../styles/Header.module.sass" />
+    <link rel="stylesheet" href="../../styles/HomeScreen.module.sass" />
+    <link rel="stylesheet" href="../../styles/ResultSearch.module.sass" />
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Helvetica Neue', sans-serif;
+        background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+        color: #fff;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+      }
 
-  <!-- Outer Grid Layout -->
-  <div style="display: grid; grid-template-columns: 260px 1fr 300px; height: 100vh; background-color: #111;">
-    
-    <!-- LEFT NAVIGATION -->
-    <aside style="padding: 24px; color: white; border-right: 1px solid #333;">
-      <img src="/images/keiya-1.png" alt="User Avatar" style="border-radius: 50%; width: 48px; height: 48px;" />
-      <h3 style="margin-top: 12px;">Kohaku</h3>
-      <nav>
-        <ul style="list-style: none; padding: 0; margin-top: 24px;">
-          <li style="margin: 12px 0;">Home</li>
-          <li style="margin: 12px 0;">Notifications</li>
-          <li style="margin: 12px 0;">Messages</li>
-          <li style="margin: 12px 0;">Bookmarks</li>
-          <li style="margin: 12px 0;">Profile</li>
-          <li style="margin: 12px 0;">Explore</li>
-        </ul>
-      </nav>
-      <button style="margin-top: 24px; padding: 12px; width: 100%; background: linear-gradient(to right, #ff00cc, #3333ff); border: none; color: white; border-radius: 10px;">Post</button>
-    </aside>
+      .sidebar, .main-feed, .rightbar {
+        padding: 1rem;
+        overflow-y: auto;
+      }
 
-    <!-- CENTER FEED (Post area placeholder) -->
-    <main style="padding: 24px; color: white; border-right: 1px solid #333;">
-      <div style="display: flex; gap: 12px; justify-content: center; margin-bottom: 24px;">
-        <button style="flex: 1; padding: 12px; background: #2c2c2c; color: white; border-radius: 8px;">For you</button>
-        <button style="flex: 1; padding: 12px; background: #2c2c2c; color: white; border-radius: 8px;">Following</button>
+      .sidebar {
+        width: 250px;
+        background-color: #111;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .sidebar img {
+        width: 50px;
+        border-radius: 50%;
+        margin-bottom: 0.5rem;
+      }
+
+      .sidebar a {
+        color: white;
+        text-decoration: none;
+        margin: 0.25rem 0;
+        font-size: 14px;
+      }
+
+      .post-button {
+        margin-top: 2rem;
+        background: linear-gradient(to right, #a100ff, #ff00cc);
+        border: none;
+        padding: 0.75rem;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .main-feed {
+        flex: 1;
+        max-width: 700px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .filter-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .filter-buttons button {
+        flex: 1;
+        background: #333;
+        color: white;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .feed-placeholder {
+        background: #222;
+        padding: 3rem;
+        border-radius: 8px;
+        color: #aaa;
+      }
+
+      .rightbar {
+        width: 280px;
+        background-color: #111;
+      }
+
+      .rightbar h3 {
+        font-size: 16px;
+        margin-bottom: 0.5rem;
+      }
+
+      .avatar-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .avatar-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .avatar-item img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .trending {
+        margin-top: 2rem;
+      }
+
+      .trending p {
+        margin: 0.25rem 0;
+        font-size: 13px;
+        color: #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="../../images/kohaku.png" alt="User Avatar" />
+      <strong>Kohaku</strong>
+      <a href="#">Home</a>
+      <a href="#">Notifications</a>
+      <a href="#">Messages</a>
+      <a href="#">Bookmarks</a>
+      <a href="#">Profile</a>
+      <a href="#">Explore</a>
+      <button class="post-button">Post</button>
+    </div>
+
+    <!-- Main Feed Area -->
+    <div class="main-feed">
+      <div class="filter-buttons">
+        <button>For You</button>
+        <button>Following</button>
       </div>
 
-      <div style="margin-bottom: 24px;">
-        <input type="text" placeholder="Search..." style="width: 100%; padding: 12px; background-color: #222; color: white; border: none; border-radius: 8px;" />
+      <input type="text" placeholder="Search..." style="width: 100%; padding: 0.5rem; border-radius: 6px; background: #222; border: none; color: white;"/>
+
+      <div class="feed-placeholder">
+        Your feed will appear here soon...
       </div>
+    </div>
 
-      <section id="post-feed" style="min-height: 500px; background-color: #1a1a1a; border-radius: 12px; padding: 24px;">
-        <h2 style="opacity: 0.6;">Your feed will appear here soon...</h2>
-      </section>
-    </main>
-
-    <!-- RIGHT SIDEBAR -->
-    <aside style="padding: 24px; color: white;">
-      <h3 style="margin-bottom: 12px;">Who to follow</h3>
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-        <img src="/images/leila-1.png" style="width: 48px; height: 48px; border-radius: 50%;" alt="Leila">
-        <div>
-          <strong>Leila</strong><br/>
-          <small>Emotional Tantric Bonding</small>
+    <!-- Right Bar -->
+    <div class="rightbar">
+      <h3>Who to follow</h3>
+      <div class="avatar-row">
+        <div class="avatar-item">
+          <img src="../../images/leila-1.png" />
+          <div>
+            <strong>Leila</strong><br />
+            <span style="font-size: 12px; color: #aaa;">Emotional Tantric Bonding</span>
+          </div>
+        </div>
+        <div class="avatar-item">
+          <img src="../../images/odalys-1.png" />
+          <div>
+            <strong>Odalys</strong><br />
+            <span style="font-size: 12px; color: #aaa;">Dominant Latina Temptress</span>
+          </div>
+        </div>
+        <div class="avatar-item">
+          <img src="../../images/violet-1.png" />
+          <div>
+            <strong>Violet</strong><br />
+            <span style="font-size: 12px; color: #aaa;">Sensual Edge Hacker</span>
+          </div>
         </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-        <img src="/images/odalys-1.png" style="width: 48px; height: 48px; border-radius: 50%;" alt="Odalys">
-        <div>
-          <strong>Odalys</strong><br/>
-          <small>Dominant Latina Temptress</small>
-        </div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-        <img src="/images/violet-1.png" style="width: 48px; height: 48px; border-radius: 50%;" alt="Violet">
-        <div>
-          <strong>Violet</strong><br/>
-          <small>Sensual Edge Hacker</small>
-        </div>
-      </div>
 
-      <h3 style="margin: 24px 0 12px;">Trending topics</h3>
-      <ul style="list-style: none; padding-left: 0;">
-        <li>#AIromance</li>
-        <li>#DarkDesire</li>
-        <li>#EmotionalIntelligence</li>
-        <li>#SaSStisfied</li>
-      </ul>
-    </aside>
-  </div>
-
-</body>
+      <div class="trending">
+        <h3>Trending topics</h3>
+        <p>#AInRomance</p>
+        <p>#DarkDesire</p>
+        <p>#EmotionalIntelligence</p>
+        <p>#SaSStisfied</p>
+      </div>
+    </div>
+  </body>
 </html>

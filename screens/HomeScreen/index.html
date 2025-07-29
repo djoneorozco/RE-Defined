@@ -1,198 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SaSStisfied | Home</title>
-    <link rel="stylesheet" href="../../styles/variables.sass" />
-    <link rel="stylesheet" href="../../styles/Header.module.sass" />
-    <link rel="stylesheet" href="../../styles/HomeScreen.module.sass" />
-    <link rel="stylesheet" href="../../styles/ResultSearch.module.sass" />
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Helvetica Neue', sans-serif;
-        background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-        color: #fff;
-        display: flex;
-        height: 100vh;
-        overflow: hidden;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RE-DEFINED — Home</title>
 
-      .sidebar, .main-feed, .rightbar {
-        padding: 1rem;
-        overflow-y: auto;
-      }
+  <!-- 🌐 Global Styles -->
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../styles/layout.css" />
+  <link rel="stylesheet" href="../../styles/page.css" />
+  <link rel="stylesheet" href="../../styles/common.sass" />
+  <link rel="stylesheet" href="../../styles/variable.sass" />
 
-      .sidebar {
-        width: 250px;
-        background-color: #111;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(120deg, #0f0f0f, #1b1030);
+      color: #fff;
+    }
 
-      .sidebar img {
-        width: 50px;
-        border-radius: 50%;
-        margin-bottom: 0.5rem;
-      }
+    .home-container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-      .sidebar a {
-        color: white;
-        text-decoration: none;
-        margin: 0.25rem 0;
-        font-size: 14px;
-      }
+    .sidebar {
+      width: 250px;
+      background-color: #101010;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-      .post-button {
-        margin-top: 2rem;
-        background: linear-gradient(to right, #a100ff, #ff00cc);
-        border: none;
-        padding: 0.75rem;
-        border-radius: 8px;
-        color: white;
-        cursor: pointer;
-        font-weight: bold;
-      }
+    .sidebar nav a {
+      display: block;
+      color: #ddd;
+      margin: 12px 0;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-      .main-feed {
-        flex: 1;
-        max-width: 700px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
+    .sidebar nav a:hover {
+      color: #fff;
+    }
 
-      .filter-buttons {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1rem;
-      }
+    .post-button {
+      margin-top: 20px;
+      padding: 12px;
+      background: linear-gradient(to right, #ff00cc, #3333ff);
+      border: none;
+      border-radius: 24px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-      .filter-buttons button {
-        flex: 1;
-        background: #333;
-        color: white;
-        padding: 0.5rem;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
-        cursor: pointer;
-      }
+    .main-feed {
+      flex: 1;
+      padding: 32px;
+      background: linear-gradient(to bottom, #1a1a2e, #1f1f2f);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+    }
 
-      .feed-placeholder {
-        background: #222;
-        padding: 3rem;
-        border-radius: 8px;
-        color: #aaa;
-      }
+    .post-card {
+      width: 600px;
+      background-color: #222;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    }
 
-      .rightbar {
-        width: 280px;
-        background-color: #111;
-      }
+    .post-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
 
-      .rightbar h3 {
-        font-size: 16px;
-        margin-bottom: 0.5rem;
-      }
+    .rightbar {
+      width: 250px;
+      background-color: #101010;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      color: #ccc;
+    }
 
-      .avatar-row {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
+    .rightbar h4 {
+      margin-bottom: 12px;
+    }
 
-      .avatar-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-
-      .avatar-item img {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-
-      .trending {
-        margin-top: 2rem;
-      }
-
-      .trending p {
-        margin: 0.25rem 0;
-        font-size: 13px;
-        color: #ccc;
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- Sidebar -->
+    .user-suggestion {
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="home-container">
+    
+    <!-- 📚 Sidebar -->
     <div class="sidebar">
-      <img src="../../images/kohaku.png" alt="User Avatar" />
-      <strong>Kohaku</strong>
-      <a href="#">Home</a>
-      <a href="#">Notifications</a>
-      <a href="#">Messages</a>
-      <a href="#">Bookmarks</a>
-      <a href="#">Profile</a>
-      <a href="#">Explore</a>
+      <div>
+        <h2 style="color:white;">Kohaku</h2>
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">Notifications</a>
+          <a href="#">Messages</a>
+          <a href="#">Bookmarks</a>
+          <a href="#">Profile</a>
+          <a href="#">Explore</a>
+        </nav>
+      </div>
       <button class="post-button">Post</button>
     </div>
 
-    <!-- Main Feed Area -->
+    <!-- 📰 Feed -->
     <div class="main-feed">
-      <div class="filter-buttons">
-        <button>For You</button>
-        <button>Following</button>
-      </div>
-
-      <input type="text" placeholder="Search..." style="width: 100%; padding: 0.5rem; border-radius: 6px; background: #222; border: none; color: white;"/>
-
-      <div class="feed-placeholder">
-        Your feed will appear here soon...
+      <div class="post-card">
+        <h3>Welcome to RE-DEFINED</h3>
+        <p>Your feed will appear here soon...</p>
       </div>
     </div>
 
-    <!-- Right Bar -->
+    <!-- 💡 Rightbar -->
     <div class="rightbar">
-      <h3>Who to follow</h3>
-      <div class="avatar-row">
-        <div class="avatar-item">
-          <img src="../../images/leila-1.png" />
-          <div>
-            <strong>Leila</strong><br />
-            <span style="font-size: 12px; color: #aaa;">Emotional Tantric Bonding</span>
-          </div>
-        </div>
-        <div class="avatar-item">
-          <img src="../../images/odalys-1.png" />
-          <div>
-            <strong>Odalys</strong><br />
-            <span style="font-size: 12px; color: #aaa;">Dominant Latina Temptress</span>
-          </div>
-        </div>
-        <div class="avatar-item">
-          <img src="../../images/violet-1.png" />
-          <div>
-            <strong>Violet</strong><br />
-            <span style="font-size: 12px; color: #aaa;">Sensual Edge Hacker</span>
-          </div>
-        </div>
+      <h4>Who to follow</h4>
+      <div class="user-suggestion">
+        <strong>Leila</strong> <br />
+        Emotional Tantric Bonding
+      </div>
+      <div class="user-suggestion">
+        <strong>Odalys</strong> <br />
+        Dominant Latina Temptress
+      </div>
+      <div class="user-suggestion">
+        <strong>Violet</strong> <br />
+        Sensual Edge Hacker
       </div>
 
-      <div class="trending">
-        <h3>Trending topics</h3>
-        <p>#AInRomance</p>
-        <p>#DarkDesire</p>
-        <p>#EmotionalIntelligence</p>
-        <p>#SaSStisfied</p>
-      </div>
+      <h4 style="margin-top: 24px;">Trending topics</h4>
+      <p>#AInRomance<br>#DarkDesire<br>#EmotionalIntelligence<br>#SaSStisfied</p>
     </div>
-  </body>
+  </div>
+</body>
 </html>

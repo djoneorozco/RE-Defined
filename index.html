@@ -1,57 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RE-DEFINED — Listing Coach</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- ✅ Glow-wrapper background -->
-  <div class="glow-wrapper">
-    <div class="quiz-container">
-      <h1>RE-DEFINED</h1>
-      <p class="tagline">Your AI Listing Coach — Unlock the Perfect Buyer Archetype</p>
+//#1 Import required packages and styles
+import React from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
+import '@/styles/style.css'  // Make sure style.css is inside /styles/
 
-      <!-- ✅ Quiz Form -->
-      <section id="customFields">
-        <h2>Tell Us About Your Listing</h2>
-        <label>City & Neighborhood:
-          <input type="text" id="city" placeholder="e.g. San Antonio, Lackland area" />
-        </label>
-        <label>Listing Price ($):
-          <input type="number" id="price" placeholder="e.g. 275000" />
-        </label>
-        <label>Biggest Selling Challenge:
-          <input type="text" id="challenge" placeholder="e.g. needs repairs, unique buyer" />
-        </label>
-        <button id="startQuizBtn">Find Best Buyer Type</button>
-      </section>
+//#2 Main Component
+export default function HomePage() {
+  return (
+    <>
+      {/* Page Head */}
+      <Head>
+        <title>RE-DEFINED — Listing Coach</title>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
 
-      <!-- ✅ Quiz Questions -->
-      <section id="quizSection" style="display:none;">
-        <h2 id="question">Loading question...</h2>
-        <div id="answers" class="answers"></div>
-        <div id="progress" class="progress"></div>
-      </section>
+      {/* ✅ Glow-wrapper background */}
+      <div className="glow-wrapper">
+        <div className="quiz-container">
+          <h1>RE-DEFINED</h1>
+          <p className="tagline">
+            Your AI Listing Coach — Unlock the Perfect Buyer Archetype
+          </p>
 
-      <!-- ✅ Branding Footer -->
-      <div class="cta">
-        <p>Powered by RealtySaSS</p>
+          {/* ✅ Quiz Form */}
+          <section id="customFields">
+            <h2>Tell Us About Your Listing</h2>
+
+            <label>
+              City & Neighborhood:
+              <input
+                type="text"
+                id="city"
+                placeholder="e.g. San Antonio, Lackland area"
+              />
+            </label>
+
+            <label>
+              Listing Price ($):
+              <input
+                type="number"
+                id="price"
+                placeholder="e.g. 275000"
+              />
+            </label>
+
+            <label>
+              Biggest Selling Challenge:
+              <input
+                type="text"
+                id="challenge"
+                placeholder="e.g. needs repairs, unique buyer"
+              />
+            </label>
+
+            <button id="startQuizBtn">Find Best Buyer Type</button>
+          </section>
+
+          {/* ✅ Quiz Questions */}
+          <section id="quizSection" style={{ display: 'none' }}>
+            <h2 id="question">Loading question...</h2>
+            <div id="answers" className="answers"></div>
+            <div id="progress" className="progress"></div>
+          </section>
+
+          {/* ✅ Branding Footer */}
+          <div className="cta">
+            <p>Powered by RealtySaSS</p>
+          </div>
+
+          {/* ✅ Fixed Navigation Button */}
+          <div style={{ marginTop: '24px', textAlign: 'center' }}>
+            <Link href="/home">
+              <button
+                style={{
+                  padding: '12px 24px',
+                  backgroundColor: '#6c00ff',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                }}
+              >
+                Go to HomeScreen →
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
-
-      <!-- ✅ Fixed Navigation Button -->
-      <div style="margin-top: 24px; text-align: center;">
-        <a href="/home">
-          <button style="padding: 12px 24px; background-color: #6c00ff; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">
-            Go to HomeScreen →
-          </button>
-        </a>
-      </div>
-
-    </div>
-  </div>
-
-  <script src="main.js"></script>
-</body>
-</html>
+    </>
+  )
+}
